@@ -1,14 +1,15 @@
+import { format, parseISO } from 'date-fns';
 import api from '../../services/api';
 
 class SolController {
   async index(req, res) {
     const response = await api.get();
     const { data } = response;
-    const { sol_keys: solKeys } = data;
 
+    const { sol_keys: solKeys } = data;
     const solList = solKeys.map(solKey => data[solKey]);
 
-    const temperatures = solList.map(sol => sol.AT.av);
+    const temperatures = solList.map(sol => parseFloat(sol.AT.av.toFixed(2)));
     const sumOfTemperatures = temperatures.reduce(
       (total, temperature) => total + temperature
     );
@@ -16,10 +17,13 @@ class SolController {
       (sumOfTemperatures / temperatures.length).toFixed(2)
     );
 
+    const dates = solList.map(sol => format(parseISO(sol.Last_UTC), 'MMM yy'));
+
     return res.json({
+      temperatures,
+      keys: solKeys,
       averageTemperatures,
-      solKeys,
-      solList,
+      dates,
     });
   }
 
@@ -30,22 +34,21 @@ class SolController {
     const { data } = response;
     const { sol_keys: solKeys } = data;
 
-    const solExist = solKeys.find(solKey => solKey === sol);
+    const key = solKeys.find(solKey => solKey === sol);
 
-    if (!solExist) {
+    if (!key) {
       return res.json({ error: 'Invalid data' });
     }
 
-    const solKeySelected = solExist;
-    const solInfo = data[solExist];
+    const SolInfo = {
+      key,
+      temperature: parseFloat(data[key].AT.av.toFixed(2)),
+      wind: parseFloat(data[key].HWS.av.toFixed(2)),
+      pressure: parseFloat(data[key].PRE.av.toFixed(2)),
+      date: format(parseISO(data[key].Last_UTC), 'MMM yy'),
+    };
 
-    const temperatureAverage = solInfo.AT.av;
-
-    return res.json({
-      solKeySelected,
-      solInfo,
-      temperatureAverage,
-    });
+    return res.json(SolInfo);
   }
 }
 
