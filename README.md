@@ -68,5 +68,19 @@ $ yarn install
 $ yarn dev
 ```
 
+Para conhecer o frontend dessa aplicação, acesse: [API NASA - React](https://github.com/andersonsts/nasa-insight-react)
+
+---
+
+:rocket: Feito por Anderson Santos :wave: [Entre em contato!](https://www.linkedin.com/in/andersonst-dev)
+
+
+[nodejs]: https://nodejs.org/
+[yarn]: https://yarnpkg.com/
+[vc]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+
 
 
