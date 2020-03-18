@@ -68,7 +68,7 @@ $ yarn install
 $ yarn dev
 ```
 
-Para conhecer o frontend dessa aplicação, acesse: [API NASA - React](https://github.com/andersonsts/nasa-insight-react)
+:exclamation: Para conhecer o frontend dessa aplicação, acesse: [API NASA - React](https://github.com/andersonsts/nasa-insight-react)
 
 ---
 
