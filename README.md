@@ -41,4 +41,14 @@ Este projeto utiliza as seguintes tecnologias:
 -  [Date-fns](https://date-fns.org/)
 -  [VS Code][vc] com [EditorConfig][vceditconfig], [ESLint][vceslint] e [Prettier](https://github.com/prettier/prettier-eslint)
 
+## :key: Requisitos
+Antes de executar a aplicação, é necessário solicitar uma chave de acesso em [NASA API's](https://api.nasa.gov/). Essa chave deve ser inserida na variável de ambiente ```bash API_KEY ``` no repositório, para que sua máquina possa realizar uma quantidade maior de requisições.
+
+## :computer: Funcionalidades
+Essa API possui as seguintes funcionalidades:
+
+- Obter os valores de temperatura dos últimos 7 dias marcianos, além da média dessas temperaturas
+- Obter os valores de temperatura, velocidade do vento e umidade do dia marciano mais recente (dados disponibilizados pela NASA API)
+
+
 
